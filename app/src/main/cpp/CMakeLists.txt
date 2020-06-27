@@ -21,7 +21,11 @@ set_target_properties(PocoFoundation PROPERTIES IMPORTED_LOCATION
 
 add_library(PocoNet SHARED IMPORTED)
 set_target_properties(PocoNet PROPERTIES IMPORTED_LOCATION
-        ${distribution_DIR}libs/${ANDROID_ABI}/libPocoNet.so
+        ${distribution_DIR}libs/${ANDROID_ABI}/libPocoNet.so)
+
+add_library(Demo SHARED IMPORTED)
+set_target_properties(Demo PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}libs/${ANDROID_ABI}/libDemo.so
         )
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -54,6 +58,7 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
                        native-lib
+        Demo
         PocoFoundation
         PocoNet
 
